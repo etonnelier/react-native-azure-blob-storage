@@ -71,7 +71,11 @@ public class EAzureBlobStorageFile extends ReactContextBaseJavaModule{
                         final String exceptionMessage = ex.getMessage();
                         handler.post(new Runnable() {
                             public void run() {
-                                Toast.makeText(ctx, exceptionMessage, Toast.LENGTH_SHORT).show();
+                                if(exceptionMessage != null) {
+                                    Toast.makeText(ctx, exceptionMessage, Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(ctx, "Error While Updating Image...", Toast.LENGTH_SHORT).show();
+                                }
                                 promise.reject(E_LAYOUT_ERROR, ex);
                             }
                         });
