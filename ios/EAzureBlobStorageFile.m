@@ -56,7 +56,7 @@ RCT_EXPORT_METHOD(uploadFile:(NSDictionary *)options
         // Create a local blob object
         AZSCloudBlockBlob *blockBlob = [blobContainer blockBlobReferenceFromName:fileName];
         blockBlob.properties.contentType = contentType;
-        [blockBlob uploadFromFileWithURL:[NSURL URLWithString:filePath] completionHandler:^(NSError * error) {
+        [blockBlob uploadFromFileWithPath:filePath  completionHandler:^(NSError * error) {
           if (error){
             reject(@"no_event",[NSString stringWithFormat: @"Error in creating blob. %@",filePath],error);
           }else{
